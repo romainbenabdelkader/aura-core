@@ -169,7 +169,7 @@ but are not required for verification.
 
 Verification MUST remain possible without reliance on any operator.
 
-### Informative Timestamp Field Example
+## 11. Informative Timestamp Field Example
 
 An implementation MAY represent a trusted timestamp as:
 
@@ -180,3 +180,6 @@ An implementation MAY represent a trusted timestamp as:
 - timestamp.signed_at
 
 This structure is informative and non-normative.
+
+AURA Core is intentionally limited to factual assertions
+and derives its strength from this restraint.
