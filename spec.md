@@ -83,13 +83,30 @@ It does not prove legal identity or rights.
 
 ## 6. Temporal Assertions
 
-AURA Core allows temporal assertions to be included in a manifest.
-
-By default, timestamps are declarative.
-
 Trusted timestamping mechanisms (e.g. RFC 3161) MAY be included
 to strengthen evidentiary value but are not mandatory.
 
+When present, a trusted timestamp binds the manifest hash
+to a third-party time authority, reducing backdating risks.
+
+## 6.1 Trusted Timestamping (Optional)
+
+AURA Core supports optional trusted timestamping using
+independent Time Stamping Authorities (TSAs), such as those
+defined in RFC 3161.
+
+When used, the timestamp token MUST cryptographically bind
+the manifest hash to the timestamp authority response.
+
+Trusted timestamping:
+
+- increases evidentiary strength
+
+- does not introduce execution or enforcement
+
+- does not create dependency on a single authority
+
+Multiple timestamp authorities MAY be used.
 ---
 
 ## 7. Anchors (Non-Normative)
@@ -151,3 +168,15 @@ Tools, services, operators, or platforms MAY implement AURA Core
 but are not required for verification.
 
 Verification MUST remain possible without reliance on any operator.
+
+### Informative Timestamp Field Example
+
+An implementation MAY represent a trusted timestamp as:
+
+- timestamp.authority
+
+- timestamp.token
+
+- timestamp.signed_at
+
+This structure is informative and non-normative.
