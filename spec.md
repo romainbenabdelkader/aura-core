@@ -47,7 +47,7 @@ An AURA manifest MAY assert the following facts:
   
 - The integrity of the asset via a cryptographic hash
   
-- An attribution claim made by an entity controlling a key
+- An attribution claim declared by an entity controlling a key
   
 - A temporal assertion associated with the declaration
 
@@ -158,6 +158,7 @@ These limitations are inherent and acknowledged.
 AURA Core reduces evidentiary uncertainty.
 It does not eliminate disputes.
 
+AURA Core does not provide any guarantee of completeness or exhaustiveness of declared events.
 ---
 
 ## 10. Relationship to Implementations
