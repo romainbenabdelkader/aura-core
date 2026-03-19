@@ -107,3 +107,5 @@ Its purpose is to establish verifiable facts about a digital asset:
 This repository contains the core specification of the AURA manifest format.
 
 Implementations, tools, operators, and services are explicitly out of scope.
+
+DOI: https://doi.org/10.5281/zenodo.19105141
