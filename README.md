@@ -4,6 +4,9 @@ AURA Core provides minimal, reusable primitives for implementing the AURA eviden
 
 > AURA establishes facts. It does not enforce rights.
 
+This repository currently provides a reference specification and evolving implementation primitives.  
+The AURA CLI testbed demonstrates a working implementation of these concepts.
+
 This repository contains the technical building blocks used to:
 - generate manifests
 - canonicalize data
