@@ -33,9 +33,9 @@ It is a low-level library intended to:
 
 ## Position in the AURA ecosystem
 
-- AURA-STANDARD → specification  
-- aura-core → implementation primitives  
-- aura-cli → demonstrator  
+- **AURA-STANDARD** → specification
+- **aura-core** → implementation primitives
+- **aura-cli** → demonstrator
 
 ---
 
