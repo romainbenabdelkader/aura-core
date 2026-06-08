@@ -10,13 +10,9 @@ can be expressed, signed, and verified.
 It intentionally does not define:
 
 - identity verification
-  
 - legal legitimacy
-  
 - rights enforcement
-  
 - usage monitoring
-  
 - licensing mechanisms
 
 These concerns are explicitly out of scope.
@@ -28,13 +24,9 @@ These concerns are explicitly out of scope.
 AURA Core is designed according to the following principles:
 
 - Minimality: only facts strictly required for evidentiary purposes
-  
 - Neutrality: no execution, no enforcement, no policy logic
-  
 - Portability: verification without reliance on a platform
-  
 - Survivability: usability even under partial or fragmented adoption
-  
 - Explicit limitations: no claim beyond what can be proven
 
 ---
@@ -44,11 +36,8 @@ AURA Core is designed according to the following principles:
 An AURA manifest MAY assert the following facts:
 
 - The existence of a digital asset at a given time
-  
 - The integrity of the asset via a cryptographic hash
-  
 - An attribution claim declared by an entity controlling a key
-  
 - A temporal assertion associated with the declaration
 
 AURA Core does not assert the legal validity of these claims.
@@ -60,11 +49,8 @@ AURA Core does not assert the legal validity of these claims.
 An AURA manifest is a structured document containing at minimum:
 
 - asset_hash
-  
 - signing_key
-  
 - declaration
-  
 - signature
 
 Additional fields MAY be included as extensions.
@@ -107,6 +93,7 @@ Trusted timestamping:
 - does not create dependency on a single authority
 
 Multiple timestamp authorities MAY be used.
+
 ---
 
 ## 7. Anchors (Non-Normative)
@@ -114,11 +101,8 @@ Multiple timestamp authorities MAY be used.
 Manifests MAY reference external anchors such as:
 
 - DNS records
-  
 - well-known endpoints
-  
 - operator attestations
-  
 - web-of-trust assertions
 
 Anchors increase contextual confidence but are not authoritative.
@@ -130,13 +114,9 @@ Anchors increase contextual confidence but are not authoritative.
 AURA Core does NOT aim to:
 
 - prove ownership or legitimacy
-  
 - prevent copying, scraping, or reuse
-  
 - enforce compliance or policy
-  
 - replace judicial or regulatory processes
-  
 - guarantee adoption or dominance
 
 ---
@@ -146,11 +126,8 @@ AURA Core does NOT aim to:
 AURA Core assumes the following limitations:
 
 - Keys may be compromised
-  
 - Anchors may be spoofed or centralized
-  
 - Timestamps may be disputed without third-party corroboration
-  
 - Many assets will circulate without any AURA manifest
 
 These limitations are inherent and acknowledged.
@@ -159,6 +136,7 @@ AURA Core reduces evidentiary uncertainty.
 It does not eliminate disputes.
 
 AURA Core does not provide any guarantee of completeness or exhaustiveness of declared events.
+
 ---
 
 ## 10. Relationship to Implementations
