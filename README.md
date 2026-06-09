@@ -1,101 +1,142 @@
-# AURA Core — Reference Implementation Primitives
+# AURA Core
 
-AURA Core provides minimal, reusable primitives for implementing the AURA evidentiary model.
+Minimal Python primitives for the AURA evidentiary model.
 
-> AURA establishes facts. It does not enforce rights.
+AURA Core provides reusable building blocks for creating, signing and verifying technical proof manifests for digital assets.
 
-This repository currently provides a reference specification and evolving implementation primitives.  
-The AURA CLI testbed demonstrates a working implementation of these concepts.
+> AURA establishes technical facts. It does not enforce rights.
 
-This repository contains the technical building blocks used to:
-- generate manifests
-- canonicalize data
-- sign declarations
-- verify integrity and signatures
+This repository is the implementation-primitives layer of the AURA ecosystem. It is intentionally small, auditable and platform-independent.
 
-It is designed to be:
-- minimal
-- auditable
-- platform-independent
+## Position In The AURA Ecosystem
 
----
+- **AURA-STANDARD**: conceptual and specification layer
+  https://github.com/romainbenabdelkader/AURA-STANDARD
+- **aura-core**: reusable implementation primitives
+  this repository
+- **aura-cli**: command-line demonstrator
+  https://github.com/romainbenabdelkader/aura-cli
 
-## Purpose
+## What AURA Core Provides
 
-AURA Core is not an application.
+- SHA-256 file hashing
+- deterministic JSON canonicalization
+- minimal AURA manifest construction
+- Ed25519 manifest signing
+- Ed25519 signature verification
+- file integrity verification against a manifest
+- structured verification results
 
-It is a low-level library intended to:
-- support implementations of AURA
-- ensure consistency across environments
-- provide a reference for developers and auditors
+## What AURA Core Does Not Provide
 
----
+AURA Core is not an application and does not provide:
 
-## Position in the AURA ecosystem
-
-- **AURA-STANDARD** → specification
-- **aura-core** → implementation primitives
-- **aura-cli** → demonstrator
-
----
-
-## What it provides
-
-- hashing utilities (SHA256)
-- manifest construction
-- canonical JSON handling
-- Ed25519 signing
-- signature verification
-- integrity checks
-
----
-
-## What it does NOT provide
-
-- CLI
+- CLI workflows
 - UI
-- platform integration
+- DRM
 - watermarking
 - fingerprinting
+- similarity detection
 - content recognition
-- monitoring
-- enforcement
+- usage monitoring
+- platform-side enforcement
+- legal ownership decisions
+- infringement or liability decisions
 
----
+AURA provides a verifiable technical artefact. It does not decide legal ownership, infringement or liability. Law, audit, regulator or court decide.
 
-## Example usage
+## Installation
+
+For local development:
+
+```bash
+git clone https://github.com/romainbenabdelkader/aura-core
+cd aura-core
+python -m pip install -e .
+```
+
+If your system exposes Python 3 as `python3`, use:
+
+```bash
+python3 -m pip install -e .
+```
+
+## Example Usage
 
 ```python
 from aura_core import hashing, manifest, signing, verification
 
-# hash
-h = hashing.compute_hash("file.wav")
+asset_hash = hashing.compute_hash("file.wav")
 
-# manifest
-m = manifest.create_manifest(hash=h)
+unsigned_manifest = manifest.create_manifest(
+    asset_hash=asset_hash,
+    issuer_id="LOCAL-ISSUER",
+    asset_type="audio_file",
+    asset_title="file.wav",
+    asset_filename="file.wav",
+    aura_id="AURA-LOCAL-TEST",
+)
 
-# sign
-sig = signing.sign(m, private_key)
+private_key = signing.generate_private_key()
+signed_manifest = signing.sign_manifest(unsigned_manifest, private_key)
 
-# verify
-verification.verify(m, sig, public_key)
+result = verification.verify_asset_manifest("file.wav", signed_manifest)
 
-Design principles
-	•	minimal surface
-	•	explicit logic
-	•	no hidden behaviour
-	•	deterministic outputs
-	•	separation of concerns
+if result.valid:
+    print("VALID")
+else:
+    print(f"INVALID: {result.reason}")
+```
 
-⸻
+## Verification Results
 
-Status
+`verification.verify_asset_manifest(...)` returns a structured result with:
 
-Reference implementation.
-Not production hardened.
+- `valid`
+- `reason`
+- `asset_hash_ok`
+- `signature_ok`
+- `asset_hash`
+- `manifest_hash`
 
-⸻
+Expected failure reasons:
 
-License
+- `file hash mismatch`
+- `manifest signature mismatch`
+
+## Design Principles
+
+- minimal surface
+- explicit logic
+- deterministic outputs
+- no hidden network dependency
+- separation of concerns
+- no enforcement logic
+
+## Run Tests
+
+```bash
+python -m unittest discover
+```
+
+or:
+
+```bash
+python3 -m unittest discover
+```
+
+## Repository Contents
+
+- `aura_core/`: reusable Python primitives
+- `tests/`: minimal test coverage for signing and verification
+- `spec.md`: human-readable AURA Core specification notes
+- `AURA Core Specification.pdf`: PDF version of the specification
+- `LICENSE`: Apache License 2.0
+
+## Status
+
+Reference implementation primitives. Not production hardened.
+
+## License
 
 Apache License 2.0
