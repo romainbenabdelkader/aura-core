@@ -19,7 +19,7 @@ This repository is the implementation-primitives layer of the AURA ecosystem. It
 
 ## What AURA Core Provides
 
-- SHA-256 file hashing
+- SHA3-256 file hashing
 - deterministic JSON canonicalization
 - minimal AURA manifest construction
 - Ed25519 manifest signing

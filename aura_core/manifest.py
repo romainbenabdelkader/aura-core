@@ -7,7 +7,7 @@ from datetime import datetime, timezone
 from typing import Any
 
 from aura_core.canonicalization import canonical_json_bytes
-from aura_core.hashing import sha256_bytes
+from aura_core.hashing import sha3_256_bytes
 
 AURA_VERSION = "0.1"
 
@@ -39,7 +39,7 @@ def create_manifest(
         "asset_type": asset_type,
         "asset_title": asset_title,
         "asset_filename": asset_filename,
-        "asset_hash_algorithm": "SHA-256",
+        "asset_hash_algorithm": "SHA3-256",
         "asset_hash": asset_hash,
         "issued_at": issued_at or now_utc_iso(),
         "rights_reservation": rights_reservation or {},
@@ -61,5 +61,5 @@ def unsigned_manifest(value: dict[str, Any]) -> dict[str, Any]:
 
 
 def manifest_hash(value: dict[str, Any]) -> str:
-    """Return the SHA-256 hash of the canonical unsigned manifest."""
-    return sha256_bytes(canonical_json_bytes(unsigned_manifest(value)))
+    """Return the SHA3-256 hash of the canonical unsigned manifest."""
+    return sha3_256_bytes(canonical_json_bytes(unsigned_manifest(value)))

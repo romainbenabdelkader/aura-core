@@ -10,7 +10,7 @@ from cryptography.exceptions import InvalidSignature
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey
 
 from aura_core.canonicalization import canonical_json_bytes
-from aura_core.hashing import sha256_file
+from aura_core.hashing import sha3_256_file
 from aura_core.manifest import manifest_hash, unsigned_manifest
 
 
@@ -46,7 +46,7 @@ def verify_signature(value: dict[str, Any]) -> bool:
 
 def verify_asset_manifest(asset_path: str, value: dict[str, Any]) -> VerificationResult:
     """Verify an asset against its AURA manifest."""
-    computed_asset_hash = sha256_file(asset_path)
+    computed_asset_hash = sha3_256_file(asset_path)
     signature_ok = verify_signature(value)
     asset_hash_ok = computed_asset_hash == value.get("asset_hash")
 
