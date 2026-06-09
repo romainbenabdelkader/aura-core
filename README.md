@@ -6,13 +6,13 @@ AURA Core provides reusable building blocks for creating, signing and verifying 
 
 > AURA establishes technical facts. It does not enforce rights.
 
-This repository is the implementation-primitives layer of the AURA ecosystem. It is intentionally small, auditable and platform-independent.
+This repository is the non-normative implementation-primitives layer of the AURA ecosystem. It is intentionally small, auditable and platform-independent.
 
 ## Position In The AURA Ecosystem
 
 - **AURA-STANDARD**: conceptual and specification layer
   https://github.com/romainbenabdelkader/AURA-STANDARD
-- **aura-core**: reusable implementation primitives
+- **aura-core**: non-normative reusable implementation primitives
   this repository
 - **aura-cli**: command-line demonstrator
   https://github.com/romainbenabdelkader/aura-cli
@@ -135,7 +135,7 @@ python3 -m unittest discover
 
 ## Status
 
-Reference implementation primitives. Not production hardened.
+Non-normative implementation primitives. Not production hardened.
 
 ## License
 
