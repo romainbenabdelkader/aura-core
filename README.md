@@ -1,5 +1,12 @@
 # AURA Core
 
+> Historical v0.1 educational demonstration. This repository's deterministic
+> Python JSON serialization is not RFC 8785 JCS and its manifests are not the
+> current AURA v1.0/v1.1 format. For current integration, start with
+> [AURA-VERIFIER's guide](https://github.com/romainbenabdelkader/AURA-VERIFIER/blob/main/INTEGRATORS.md)
+> and its public test vector. This code and existing proofs are preserved for
+> historical reproducibility; they are not a current-format signing SDK.
+
 Minimal Python primitives for the AURA evidentiary model.
 
 AURA Core provides reusable building blocks for creating, signing and verifying technical proof manifests for digital assets.
